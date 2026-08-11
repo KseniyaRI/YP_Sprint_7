@@ -29,6 +29,7 @@ Thumbs.db
 *.tmp
 *.bak
 
-# Allure: локально сгенерированный HTML-отчёт обычно не коммитят.
-# Результаты (target/allure-results) при необходимости добавляют через: git add -f
+# Allure: HTML-отчёт не коммитим.
+# Сырые результаты пишутся в target/allure-results (см. src/test/resources/allure.properties).
+# В git их добавляют так: git add -f ./target/allure-results/.
 allure-report/
