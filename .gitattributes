@@ -1,0 +1,3 @@
+# Allure results содержат HTML-attachments; не учитывать их в статистике языков GitHub
+target/allure-results/** linguist-vendored
+target/allure-results/** linguist-generated
