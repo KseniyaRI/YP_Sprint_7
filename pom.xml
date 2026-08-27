@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>praktikum</groupId>
     <artifactId>Sprint_7</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -17,6 +17,8 @@
         <rest-assured.version>5.4.0</rest-assured.version>
         <allure.version>2.25.0</allure.version>
         <aspectj.version>1.9.22</aspectj.version>
+        <datafaker.version>1.9.0</datafaker.version>
+        <jackson.version>2.17.1</jackson.version>
     </properties>
 
     <dependencies>
@@ -49,6 +51,22 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-rest-assured</artifactId>
             <version>${allure.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Генерация уникальных тестовых данных без хардкода -->
+        <dependency>
+            <groupId>net.datafaker</groupId>
+            <artifactId>datafaker</artifactId>
+            <version>${datafaker.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Нужен для @JsonInclude: RestAssured сериализует POJO через Jackson и не шлёт null-поля -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
