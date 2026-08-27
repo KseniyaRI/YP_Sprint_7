@@ -29,7 +29,5 @@ Thumbs.db
 *.tmp
 *.bak
 
-# Allure: HTML-отчёт не коммитим.
-# Сырые результаты пишутся в target/allure-results (см. src/test/resources/allure.properties).
-# В git их добавляют так: git add -f ./target/allure-results/.
 allure-report/
+.allure/

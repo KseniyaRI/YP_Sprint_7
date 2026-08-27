@@ -4,6 +4,7 @@ import praktikum.BaseTest;
 import praktikum.steps.CourierSteps;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import praktikum.models.Courier;
 import praktikum.data.TestData;
 import io.restassured.response.Response;
@@ -35,6 +36,7 @@ public class CourierCreateTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Можно создать курьера с валидными данными")
     public void createCourierWithAllFields() {
         Response response = courierSteps.createCourier(new Courier(login, password, firstName));
         Assertions.assertEquals(201, response.getStatusCode());
@@ -42,6 +44,7 @@ public class CourierCreateTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Нельзя создать курьера без логина")
     public void createCourierWithNoLogin() {
         Response response = courierSteps.createCourier(new Courier(null, password, firstName));
         Assertions.assertEquals(400, response.getStatusCode());
@@ -49,6 +52,7 @@ public class CourierCreateTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Нельзя создать курьера без пароля")
     public void createCourierWithNoPassword() {
         Response response = courierSteps.createCourier(new Courier(login, null, firstName));
         Assertions.assertEquals(400, response.getStatusCode());
@@ -56,6 +60,7 @@ public class CourierCreateTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Нельзя создать двух курьеров с одинаковым логином")
     public void createCourierWithExistingLogin() {
         Courier courier = new Courier(login, password, firstName);
 

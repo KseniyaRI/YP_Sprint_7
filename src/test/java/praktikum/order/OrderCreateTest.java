@@ -6,23 +6,12 @@ import praktikum.models.Order;
 import praktikum.data.TestData;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import java.util.List;
 import java.util.stream.Stream;
 
-/**
- * Тесты ручки создания заказа: POST /api/v1/orders
- *
- * Что проверить по заданию (через параметризацию):
- * - один цвет BLACK;
- * - один цвет GREY;
- * - оба цвета;
- * - без цвета;
- * - в ответе есть track.
- *
- * Подсказка JUnit 5: @ParameterizedTest + @MethodSource (удобно для List&lt;String&gt; / null).
- */
 public class OrderCreateTest extends BaseTest {
 
     private final OrderSteps orderSteps = new OrderSteps();
@@ -38,6 +27,7 @@ public class OrderCreateTest extends BaseTest {
 
     @ParameterizedTest
     @MethodSource("colors")
+    @DisplayName("Можно создать заказ с разными вариантами цвета")
     public void createOrderWithColors(List<String> color) {
         Order order = TestData.randomOrder(color);
         Response response = orderSteps.createOrder(order);
